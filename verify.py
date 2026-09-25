@@ -37,13 +37,13 @@ def check(name, ok):
     assert ok
 
 
-# --- Lemma 2: eps * M(eps) = R(eps) ------------------------------------------------------------
+# Lemma 2: eps * M(eps) = R(eps)
 for eps in (mpf("0.37"), mpf("0.8")):
     # k(s) = sqrt(1+s^2) - s, written stably as 1/(s + sqrt(1+s^2)); substitute s = e^u
     M = quad(lambda u: exp(eps * u) / (exp(u) + sqrt(1 + exp(2 * u))), [-inf, -20, 0, 20, 100, 300, inf])
     check(f"Lemma 2 at eps={eps}", abs(eps * M - R(eps)) < mpf(10) ** -15)
 
-# --- Theorem 1, Remark 2, Example 1, Remark 1 --------------------------------------------------
+# Theorem 1, Remark 2, Example 1, Remark 1
 for n in (2.5, 3, 5, 7.5, 10, 100, 1000):
     check(f"Theorem 1 at n={n}", abs(L_exact(n) - L_quad(n)) < mpf(10) ** -25)
 for c, n in ((3, 5), (0.5, 7), (0.25, 9.5)):
@@ -56,14 +56,14 @@ check("Remark 1: parabola length", abs(L_quad(2) - parabola) < mpf(10) ** -25)
 # the poles at n = 2 cancel; at n = 2 + 1e-10 the formula is within ~1e-11 of L(2)
 check("Remark 1: Theorem 1 tends to L(2) as n -> 2+", abs(L_exact(2 + mpf(10) ** -10) - parabola) < mpf(10) ** -10)
 
-# --- Lemma 3: Taylor coefficients of ln R -------------------------------------------------------
+# Lemma 3: Taylor coefficients of ln R
 a1, a2, a3 = log(2) - 1, pi**2 / 12 + mpf(1) / 2, zeta(3) / 4 - mpf(1) / 3
 co = taylor(lambda x: log(R(x)), 0, 3)
 check("Lemma 3: a1", abs(co[1] - a1) < mpf(10) ** -20)
 check("Lemma 3: a2", abs(co[2] - a2) < mpf(10) ** -20)
 check("Lemma 3: a3", abs(co[3] - a3) < mpf(10) ** -20)
 
-# --- Proposition 1, Corollary 1, Proposition 2, Table III ----------------------------------------
+# Proposition 1, Corollary 1, Proposition 2, Table III
 d = a2 * (1 + log(2)) + zeta(3) / 4 - mpf(4) / 3
 print("\nTable III:  n | L(n) | E_a(n) | E_b(n)")
 for n in (3, 5, 10, 20, 50, 100, 1000, 10000, 100000):
@@ -85,7 +85,7 @@ for n in (3, 5, 10, 20, 50, 100, 1000, 10000, 100000):
 print("PASS Proposition 1 bounds, and the error rates of Corollary 1 and Proposition 2")
 print(f"d = {nstr(d, 8)}")
 
-# --- Corollary 2: 1 + c - l_c(n) = (ln(cn) + 1 - ln 2)/(n-1) + O(ln^2 n / n^2) -------------------
+# Corollary 2: 1 + c - l_c(n) = (ln(cn) + 1 - ln 2)/(n-1) + O(ln^2 n / n^2)
 for c in (mpf("0.5"), mpf(3), mpf(10)):
     for n in (10**2, 10**3, 10**4, 10**5):
         n = mpf(n)
@@ -93,7 +93,7 @@ for c in (mpf("0.5"), mpf(3), mpf(10)):
         assert abs(err) * n**2 / log(n) ** 2 < 2, "Corollary 2"
 print("PASS Corollary 2 for c in {0.5, 3, 10} and n up to 10^5")
 
-# --- Theorem 2: the constant C(theta) ------------------------------------------------------------
+# Theorem 2: the constant C(theta)
 for th in (pi / 2, pi / 3, 1, 2 * pi / 3, mpf(3)):
     c = cos(th)
     # cancellation-free forms: h = 2(1-c)s/(1+s+r) and h - (1-c) = (1-c)(s-1-r)/(1+s+r)
@@ -118,7 +118,7 @@ for num, den, lab in ((1, 6, "pi/6"), (1, 4, "pi/4"), (1, 3, "pi/3"), (1, 2, "pi
     print(f"  {lab:>6} | {nstr(1 - c, 6)} | {nstr(Cform, 8)} | {nstr(emp, 8)}")
 print("PASS Table IV values agree with C(theta) to within 2 ln^2 n / n")
 
-# --- Theorem 3: superellipse ----------------------------------------------------------------------
+# Theorem 3: superellipse
 K = 2 * sqrt(2) * log(1 + sqrt(2)) - 2 * log(2)
 check("Theorem 3: F(0) = K", abs(quad(lambda t: (1 - sqrt(t * t + (1 - t) ** 2)) / (t * (1 - t)), [0, 0.5, 1]) - K) < mpf(10) ** -30)
 

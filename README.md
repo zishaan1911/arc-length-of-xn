@@ -1,6 +1,7 @@
 # How long is the graph of xⁿ?
 
-**Logarithmic corner defects in arc length.** Zishaan Ahmed, 2026. Paper: [paper.pdf](paper.pdf)
+**Logarithmic corner defects in arc length.** Zishaan Ahmed (independent researcher), 2026.
+Paper: [paper.pdf](paper.pdf)
 
 The graph of y = xⁿ on [0,1] has arc length L(n) → 2 as n → ∞. This paper determines how fast:
 

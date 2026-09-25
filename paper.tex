@@ -69,10 +69,10 @@
 \title{How Long Is the Graph of $x^n$?\\ Logarithmic Corner Defects in Arc Length}
 
 \author{Zishaan~Ahmed%
-\thanks{Z.~Ahmed can be reached at
-\href{mailto:iamzishaan@gmail.com}{iamzishaan@gmail.com}.}%
-\thanks{The code that verifies every numerical result in this paper, and the \LaTeX{}
-source of the paper, are available under the MIT license at
+\thanks{Z.~Ahmed is an independent researcher (e-mail:
+\href{mailto:iamzishaan@gmail.com}{iamzishaan@gmail.com}).}%
+\thanks{The code that verifies every numerical result in this paper and the \LaTeX{}
+source of the paper are available under the MIT license at
 \url{https://github.com/zishaan1911/arc-length-of-xn}.}}
 
 \markboth{Ahmed: How Long Is the Graph of $x^n$?}{Ahmed: How Long Is the Graph of $x^n$?}
@@ -82,17 +82,17 @@ source of the paper, are available under the MIT license at
 \begin{abstract}
 The graph of $y=x^n$ on $[0,1]$ has arc length $L(n)\to2$ as $n\to\infty$, because the curve
 collapses onto the two legs of a right-angled corner. We determine the rate of this
-convergence precisely. Comparing Euclidean with taxicab length and evaluating a single Beta
+convergence. Comparing Euclidean with taxicab length and evaluating a single Beta
 integral, we derive an exact, rapidly convergent representation of $L(n)$ in terms of the
 Gamma function. From it we obtain $2-L(n)=(\ln n+1-\ln2)/(n-1)+O(\ln^2 n/n^2)$, the sharper
 approximation $L(n)=1+(2/(en))^{1/(n-1)}+\pi^2/(12n^2)+O(\ln n/n^3)$, and elementary two-sided
-bounds valid for all $n\ge3$. The logarithm has a simple geometric origin: the curve approaches
+bounds valid for all $n\ge3$. The logarithm arises because the curve approaches
 the vertical leg of the corner only logarithmically. For a corner of arbitrary turning angle
 $\theta$, the coefficient of $\ln n/n$ becomes $2\sin^2(\theta/2)$, and we find the next-order
 constant in closed form. By contrast, the perimeter of the superellipse $|x|^p+|y|^p=1$
 satisfies $P(p)=8-4K/p+O(p^{-2})$ with $K=2\sqrt2\ln(1+\sqrt2)-2\ln2$, with no logarithm,
-because the superellipse approaches both sides of the square exponentially fast. Every
-numerical claim is verified to high precision by publicly available code.
+because the superellipse approaches both sides of the square exponentially fast. All
+numerical results were checked in high-precision arithmetic with publicly available code.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -106,11 +106,11 @@ superellipse.
 
 \IEEEPARstart{L}{ength} is not continuous under uniform convergence. A staircase from
 $(0,0)$ to $(1,1)$ with ever finer steps converges uniformly to the diagonal, yet its length
-stays equal to $2$ instead of approaching $\sqrt2$: arc length is only lower
+stays equal to $2$ instead of approaching $\sqrt2$, because arc length is only lower
 semicontinuous~\cite{BBI}.
 
-The family $y=x^n$ on $[0,1]$ shows a smooth and more subtle version of the same phenomenon.
-As $n\to\infty$ the graphs converge, in the Hausdorff sense, to the corner path
+The family $y=x^n$ on $[0,1]$ is a smooth relative of the staircase. As $n\to\infty$ the
+graphs converge, in the Hausdorff sense, to the corner path
 \[
   \Gamma:\ (0,0)\longrightarrow(1,0)\longrightarrow(1,1),
 \]
@@ -118,9 +118,9 @@ and this time the lengths do converge to the length of the limit:
 \begin{equation}\label{eq:Ldef}
   L(n):=\int_0^1\sqrt{1+n^2x^{2n-2}}\dd x\ \longrightarrow\ 2.
 \end{equation}
-This limit is a standard exercise. The question we answer is \emph{how fast} the convergence
-is. The answer turns out to be rich: the error decays like $(\ln n)/n$, the logarithm has a
-clean geometric origin, and the error admits an exact expansion in terms of the Gamma function.
+This limit is a standard exercise. In this paper we study the rate of convergence. We show that
+the error decays like $(\ln n)/n$, explain the origin of the logarithm, and give an exact
+expansion of the error in terms of the Gamma function.
 Fig.~\ref{fig:curves} shows the two families of curves studied in this paper.
 
 \begin{figure*}[!t]
@@ -224,14 +224,14 @@ Consequently, as $n\to\infty$,
 \end{align}
 \end{mainthm}
 
-The terms of the series in~\eqref{eq:exact-intro} decay like $n^{-2k}$; four terms already
-give $L(100)$ to about $22$ digits. The approximation~\eqref{eq:asy2} is remarkably accurate:
-its error is below $5\times10^{-6}$ at $n=100$ and below $2\times10^{-11}$ at $n=10^4$
+The terms of the series in~\eqref{eq:exact-intro} decay like $n^{-2k}$, and four terms
+give $L(100)$ to about $22$ digits. The error of the approximation~\eqref{eq:asy2} is
+below $5\times10^{-6}$ at $n=100$ and below $2\times10^{-11}$ at $n=10^4$
 (Section~\ref{sec:asymp}).
 
-Where does the logarithm come from? Section~\ref{sec:why} shows that it reflects how slowly
-$x^n$ approaches the \emph{vertical} leg of the corner, and Section~\ref{sec:angle} shows that
-it does not depend on the corner being a right angle. For unit vectors $u,v\in\R^2$ that make
+Section~\ref{sec:why} traces the logarithm to the slow approach of $x^n$ to the vertical leg
+of the corner, and Section~\ref{sec:angle} shows that it does not depend on the corner being a
+right angle. For unit vectors $u,v\in\R^2$ that make
 an angle $\theta\in[0,\pi)$, consider the curve
 \begin{equation}\label{eq:gamma}
   \gamma_n(x)=x\,u+x^n\,v,\qquad 0\le x\le1,
@@ -251,9 +251,9 @@ where
 \]
 \end{mainthm}
 
-Finally, the logarithm is \emph{not} a universal feature of curves that collapse onto a
-corner. The superellipse, or ``squircle,'' $|x|^p+|y|^p=1$, popularized by Piet
-Hein~\cite{Gardner}, converges to the square $[-1,1]^2$ as $p\to\infty$, and it does so faster.
+The logarithm does not appear for every curve that collapses onto a corner. The superellipse
+$|x|^p+|y|^p=1$, popularized by Piet Hein~\cite{Gardner}, converges to the square $[-1,1]^2$
+as $p\to\infty$ at the faster rate $1/p$.
 
 \begin{mainthm}[Theorem~\ref{thm:squircle}]\label{thmD}
 The perimeter $P(p)$ of $|x|^p+|y|^p=1$ satisfies, for every $p\ge2$,
@@ -293,7 +293,7 @@ hypergeometric function; see the discussion in~\cite{MSE}, which gives in partic
 In principle, \eqref{eq:exact-intro} can be obtained from~\eqref{eq:hyp} through the classical
 connection formula that transforms a ${}_2F_1$ at argument $z$ into functions of
 $1/z$~\cite[Eq.~15.8.2]{DLMF}, \cite[Ch.~2]{AAR}; see Remark~\ref{rem:hyp}. Our derivation
-avoids hypergeometric functions entirely. It uses one substitution and one Beta integral, and
+does not use hypergeometric functions. It needs one substitution and one Beta integral, and
 it leads directly to the asymptotic statements~\eqref{eq:asy1} and~\eqref{eq:asy2}, which we
 have not found in the literature.
 
@@ -305,9 +305,9 @@ not found it elsewhere.
 The integrals behind our results have the form $\int_0^n h(s)\,s^{\eps-1}\dd s$ with a small
 parameter $\eps$, which is the natural setting of Mellin-transform
 asymptotics~\cite{FGD,Wong}; see also~\cite{deBruijn} for the classical methods. We need only
-one explicit Mellin transform, which we evaluate by hand. Given how elementary these questions
-are, some of our results may exist as solved problems in the journal literature, and we
-would welcome references.
+one Mellin transform, which we evaluate directly. Because these questions are elementary, some
+of our results may already appear in the problem sections of journals, and we would be grateful
+for references.
 
 \subsection{Contributions and Organization}\label{sec:contrib}
 
@@ -332,15 +332,15 @@ The contributions of this paper are as follows.
 \section{The Taxicab Defect}\label{sec:defect}
 % ======================================================================
 
-The key idea is to compare the Euclidean length of a curve with its \emph{taxicab} length. Let
+We compare the Euclidean length of a curve with its \emph{taxicab} length. Let
 $\gamma(t)=(x(t),y(t))$ be a $C^1$ curve from $(0,0)$ to $(1,1)$ whose two coordinates are
 monotone. Its taxicab length is $\int(|x'|+|y'|)\dd t=1+1=2$, so
 \begin{equation}\label{eq:taxicab}
   2-\operatorname{length}(\gamma)=\int\Bigl(|x'|+|y'|-\sqrt{x'^2+y'^2}\Bigr)\dd t\ \ge0.
 \end{equation}
 The integrand vanishes where the curve is horizontal or vertical and is largest where the
-curve moves diagonally. The defect therefore measures how much ``diagonal travel'' the curve
-does. The same idea works for any pair of directions.
+curve moves diagonally, so the defect measures how far the curve travels in diagonal
+directions. The same comparison works for any pair of directions.
 
 \begin{lemma}[Defect integral]\label{lem:defect}
 Let $u,v\in\R^2$ be unit vectors with $u\cdot v=c=\cos\theta$, where $\theta\in[0,\pi)$, and
@@ -377,9 +377,9 @@ so that
   D(n)=\eps\,n^{-\eps}\int_0^n g(s)\,s^{\eps-1}\dd s.
 \end{equation}
 The function $g$ is the length lost per unit of horizontal distance along a stretch of slope
-$s$ (Fig.~\ref{fig:g}). Two features of $g$ drive everything that follows. First,
-$g(s)\approx s$ for small $s$, so gentle slopes cost little. Second, $g(s)\to1$ as
-$s\to\infty$, so steep slopes cost the full horizontal step. The second feature is what makes
+$s$ (Fig.~\ref{fig:g}). Two properties of $g$ are used below. For small $s$,
+$g(s)\approx s$, so gentle slopes lose little length. As $s\to\infty$, $g(s)\to1$, so steep
+slopes lose almost the whole horizontal step. The second property makes
 $\int_1^n g(s)\,\dd s/s$ grow like $\ln n$.
 
 % ======================================================================
@@ -438,8 +438,8 @@ $1-e^{-x}\ge x-x^2/2$ for $x\ge0$; with $x=\eps\ln n$ this gives the claim.
 \end{tikzpicture}
 \caption{The defect density $g(s)=1+s-\sqrt{1+s^2}$, which is the length lost per unit of
 horizontal distance along a stretch of slope $s$, with the bounds~\eqref{eq:gupper}
-and~\eqref{eq:glower}. Gentle slopes lose almost nothing; steep slopes lose almost the whole
-horizontal step.}
+and~\eqref{eq:glower}. The loss is small for gentle slopes and approaches the full horizontal
+step for steep ones.}
 \label{fig:g}
 \end{figure}
 
@@ -456,8 +456,8 @@ $k(s)\le1/(2s)$. Its \emph{Mellin transform}
 \begin{equation}\label{eq:mellin}
   M(\eps):=\int_0^\infty k(s)\,s^{\eps-1}\dd s
 \end{equation}
-therefore converges for $0<\eps<1$. Mellin transforms are the natural tool for integrals such
-as~\eqref{eq:D}~\cite{FGD,Wong}. Here we need only one explicit evaluation.
+therefore converges for $0<\eps<1$. Mellin transforms are the standard tool for integrals such
+as~\eqref{eq:D}~\cite{FGD,Wong}; here we need only the evaluation in Lemma~\ref{lem:mellin}.
 
 \begin{lemma}\label{lem:mellin}
 For $0<\eps<1$, we have $\eps\,M(\eps)=R(\eps)$, with $R$ as in~\eqref{eq:Rdef}.
@@ -563,8 +563,8 @@ covers every interval $[0,a]$.
 The large-argument connection formula~\cite[Eq.~15.8.2]{DLMF} expresses~\eqref{eq:hyp} as a
 combination of two ${}_2F_1$'s at argument $-1/n^2$. One can check that the Gamma factor
 multiplying $n^{-\eps}$ there, $\Gamma(1+\frac\eps2)\Gamma(-\frac{1+\eps}{2})/\Gamma(-\frac12)$,
-equals $R(\eps)$. What the present approach adds is an elementary route to the formula and,
-above all, the asymptotic consequences in the next section.
+equals $R(\eps)$. The derivation given here is elementary, and the form~\eqref{eq:exact}
+leads directly to the asymptotic results of the next section.
 \end{remark}
 
 % ======================================================================
@@ -648,10 +648,10 @@ $1-\eps(\ln(cn)+1-\ln2)+O(\eps^2\ln^2n)$.
 Stretching the vertical leg of the corner by a factor $c$ therefore changes the defect only
 through $\ln c$, by $(\ln c)/(n-1)$ to first order.
 
-Fig.~\ref{fig:asymp} and Table~\ref{tab:xn} show Corollary~\ref{cor:asymp} at work. Write
+Fig.~\ref{fig:asymp} and Table~\ref{tab:xn} compare Corollary~\ref{cor:asymp} with exact values. Write
 $E_a(n)$ and $E_b(n)$ for the errors of the approximations in parts (a) and (b), that is, $L(n)$
 minus the right-hand side without its $O$-term. Fig.~\ref{fig:asymp}(a) plots the rescaled
-defect $(n-1)D(n)$ against $\ln n$: the exact values lie on the line $\ln n+1-\ln2$, between the
+defect $(n-1)D(n)$ against $\ln n$. The exact values lie on the line $\ln n+1-\ln2$, between the
 bounds of Proposition~\ref{prop:elementary}. Fig.~\ref{fig:asymp}(b) compares $|E_a(n)|$ and
 $|E_b(n)|$.
 
@@ -710,8 +710,9 @@ $n$ & $L(n)$ & $E_a(n)$ & $E_b(n)$\\
 \section{Corners of Arbitrary Angle}\label{sec:angle}
 % ======================================================================
 
-The leading term in Corollary~\ref{cor:asymp}(a) depends on only two features of $g$: it is
-roughly linear near $0$, and it tends to a limit at $\infty$. The next lemma isolates this.
+The leading term in Corollary~\ref{cor:asymp}(a) depends only on two properties of $g$: it is
+roughly linear near $0$, and it has a limit at $\infty$. Lemma~\ref{lem:general} treats any
+function with these two properties.
 
 \begin{lemma}\label{lem:general}
 Let $h:[0,\infty)\to\R$ be continuous. Suppose there are constants $A,B\ge0$ and $h_\infty$
@@ -762,8 +763,8 @@ where
 \end{theorem}
 
 For $\theta=\pi/2$ this gives $C=1-\ln2$, in agreement with Corollary~\ref{cor:asymp}(a). For
-$\theta=0$ both terms vanish, as they should, because $\gamma_n$ is then a straight segment. The
-coefficient $2\sin^2(\theta/2)=1-\cos\theta$ increases with the sharpness of the turn.
+$\theta=0$ both terms vanish, since $\gamma_n$ is then a straight segment. The
+coefficient $2\sin^2(\theta/2)=1-\cos\theta$ increases with the turning angle.
 
 \begin{IEEEproof}
 By Lemma~\ref{lem:defect}, we must apply Lemma~\ref{lem:general} to $h=h_c$ with
@@ -808,8 +809,8 @@ Theorem~\ref{thm:angle}, define the empirical constant
 \]
 which by the theorem equals $C(\theta)+O(\ln^2n/n)$. Table~\ref{tab:angle} and
 Fig.~\ref{fig:angle}(b) compare $\widehat C_n(\theta)$ at $n=10^6$, computed by direct
-quadrature, with the closed form~\eqref{eq:Ctheta}. The differences are about $10^{-4}$, the
-size allowed by the error term.
+quadrature, with the closed form~\eqref{eq:Ctheta}. The differences are about $10^{-4}$, which
+is consistent with the error term.
 
 \begin{figure}[!t]
 \centering
@@ -941,7 +942,7 @@ with $\kappa=-4F'(0)=2.0209527696\ldots$, well within the bound of
 Theorem~\ref{thm:squircle}. Let $\Delta(p):=P(p)-8+4K/p$.
 Table~\ref{tab:sq} and Fig.~\ref{fig:squircle}(b) show $p^2\Delta(p)$ approaching $\kappa$.
 
-Fig.~\ref{fig:squircle}(a) shows where $K$ comes from. Near the corner $(1,1)$, put
+Fig.~\ref{fig:squircle}(a) illustrates the origin of $K$. Near the corner $(1,1)$, put
 $x=1-\alpha/p$ and $y=1-\beta/p$. To leading order, the equation $x^p+y^p=1$ becomes
 $e^{-\alpha}+e^{-\beta}=1$, a single fixed curve that does not depend on~$p$. The constant $K$
 is exactly the taxicab defect of this curve; parametrizing it by $e^{-\alpha}=t$ reproduces the
@@ -1002,13 +1003,13 @@ $p$ & $P(p)$ & $8-4K/p$ & $p^2\Delta(p)$\\
 \end{table}
 
 % ======================================================================
-\section{Why the Logarithm?}\label{sec:why}
+\section{The Origin of the Logarithm}\label{sec:why}
 % ======================================================================
 
 Formula~\eqref{eq:taxicab} says that length is lost only while the curve moves in a direction
 strictly between horizontal and vertical. A steep piece of the curve, with slope $s\gg1$, loses
 the fraction $g(s)\approx1$ of its horizontal extent. The defect is therefore approximately the
-\emph{horizontal distance traveled while the curve is steep}.
+horizontal distance traveled while the curve is steep.
 
 For $y=x^n$, the slope exceeds $1$ exactly when $x\ge n^{-1/(n-1)}$, an interval of length
 \[
@@ -1016,9 +1017,10 @@ For $y=x^n$, the slope exceeds $1$ exactly when $x\ge n^{-1/(n-1)}$, an interval
 \]
 Near $x=1$ we have $x^n\approx e^{-n(1-x)}$. To climb from height $1/n$, where the slope is
 about $1$, to height $1$, the curve must advance horizontally by about $\ln(n)/n$
-(Fig.~\ref{fig:steep}). The logarithm counts how many ``$e$-folds'' of height the curve climbs
-while steep. Equivalently, $x^n$ approaches the vertical leg $x=1$ only logarithmically: at
-height $y$, its distance to the leg is about $\ln(1/y)/n$.
+(Fig.~\ref{fig:steep}). The factor $\ln n$ is the logarithm of the ratio between the
+heights $1$ and $1/n$ at which the steep part ends and begins. Equivalently, $x^n$ approaches
+the vertical leg $x=1$ only logarithmically, since at height $y$ its distance to the leg is
+about $\ln(1/y)/n$.
 
 \begin{figure}[!t]
 \centering
@@ -1037,7 +1039,7 @@ height $y$, its distance to the leg is about $\ln(1/y)/n$.
   \node[font=\footnotesize, anchor=west] at (axis cs:0.3,0.1) {$y=x^{20}$};
 \end{axis}
 \end{tikzpicture}
-\caption{Where the defect of $x^n$ comes from ($n=20$). The curve has slope at least $1$ only on
+\caption{Origin of the defect of $x^n$ for $n=20$. The curve has slope at least $1$ only on
 the shaded strip. There it climbs from height about $1/n$ (dot) to $1$ while moving horizontally
 by about $\ln n/n$, and almost all of that horizontal movement is lost relative to the corner
 path.}
@@ -1047,40 +1049,41 @@ path.}
 The superellipse behaves differently. Its steep part is confined to a neighborhood of size
 $O(1/p)$ around the corner $(1,1)$, where, as shown in Section~\ref{sec:squircle}, it looks like
 the fixed curve $e^{-\alpha}+e^{-\beta}=1$ blown down by the factor $1/p$. That curve approaches
-its two asymptotes \emph{exponentially} fast, so its total diagonal travel is finite, and the
+its two asymptotes exponentially fast, so its total diagonal travel is finite, and the
 defect is $K/p$ per corner.
 
-In short, the defect is of order $1/n$ times the logarithm of the range of heights that the
-curve covers while steep. For the superellipse this range is bounded; for $x^n$ it is a factor
-of $n$. The same picture explains Theorem~\ref{thm:angle}, where only the fraction
-$1-\cos\theta$ of each step is lost, and Corollary~\ref{cor:scaled}, where stretching the
-vertical leg by $c$ multiplies the range of heights by $c$ and adds $\ln c$ to the logarithm.
+To summarize, the defect is of order $1/n$ times the logarithm of the ratio between the largest
+and smallest heights at which the curve is steep. This ratio is bounded for the superellipse and
+is about $n$ for $x^n$. The same reasoning accounts for the factor $1-\cos\theta$ in
+Theorem~\ref{thm:angle}, where only that fraction of each step is lost, and for the term
+$\ln c$ in Corollary~\ref{cor:scaled}, where stretching the vertical leg by $c$ multiplies
+the ratio of heights by $c$.
 
 % ======================================================================
 \section{Conclusion and Open Problems}\label{sec:conclusion}
 % ======================================================================
 
-When a family of curves collapses onto a corner, the length defect measures how much diagonal
-travel the curves do on the way. For the graph of $x^n$, the defect is $(\ln n+1-\ln2)/(n-1)$ to
+When a family of curves collapses onto a corner, the length defect measures how far the curves
+travel in diagonal directions. For the graph of $x^n$, the defect is $(\ln n+1-\ln2)/(n-1)$ to
 first order. We derived this, and the complete asymptotic expansion, from an exact
 Gamma-function formula obtained from a single Beta integral. The logarithm persists for every
 turning angle, with coefficient $2\sin^2(\theta/2)$, and it is absent for the superellipse,
-whose perimeter defect is $4K/p$. The difference comes down to how fast each curve approaches
-the sides of the corner: logarithmically for $x^n$ and exponentially for the superellipse. We
+whose perimeter defect is $4K/p$. The difference lies in how fast each curve approaches the
+sides of the corner, which is logarithmic for $x^n$ and exponential for the superellipse. We
 close with four open problems.
 
 \begin{problem}
 Is there a closed form for the second superellipse constant $\kappa=2.02095276965\ldots$
 in~\eqref{eq:kappa}? It equals $-4F'(0)$, an integral of logarithms against algebraic
-functions, so dilogarithms are likely to appear. An integer-relation search against $\pi^2$,
+functions, and we expect dilogarithms to appear. An integer-relation search against $\pi^2$,
 $\ln^22$, $\ln^2(1+\sqrt2)$, $\sqrt2\ln2\ln(1+\sqrt2)$, $\ln2$, and $\sqrt2\ln(1+\sqrt2)$ found no
 relation.
 \end{problem}
 
 \begin{problem}
 Theorem~\ref{thm:exact} rests on the Mellin transform of $g=h_0$. Find the analogous exact
-formula for general angles, based on the Mellin transform of $h_c$ in~\eqref{eq:hc}. Legendre
-functions of $\cos\theta$ are likely to appear.
+formula for general angles, based on the Mellin transform of $h_c$ in~\eqref{eq:hc}. We expect
+Legendre functions of $\cos\theta$ to appear.
 \end{problem}
 
 \begin{problem}
@@ -1161,7 +1164,7 @@ pass.
 \end{itemize}
 
 % ======================================================================
-\IEEEtriggeratref{5}
+\IEEEtriggeratref{4}
 \begin{thebibliography}{10}
 
 \bibitem{BBI}
