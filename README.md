@@ -1,6 +1,6 @@
 # How long is the graph of xⁿ?
 
-**Logarithmic corner defects in arc length.** Paper: [paper.pdf](paper.pdf)
+**Logarithmic corner defects in arc length.** Zishaan Ahmed, 2026. Paper: [paper.pdf](paper.pdf)
 
 The graph of y = xⁿ on [0,1] has arc length L(n) → 2 as n → ∞. This paper determines how fast:
 
@@ -18,6 +18,7 @@ The graph of y = xⁿ on [0,1] has arc length L(n) → 2 as n → ∞. This pape
 | `paper.tex` | LaTeX source |
 | `paper.pdf` | Compiled paper |
 | `verify.py` | Recomputes every numerical claim and table in the paper |
+| `LICENSE` | MIT license |
 
 ## Reproducing
 
@@ -31,3 +32,7 @@ To rebuild the PDF with [Tectonic](https://tectonic-typesetting.github.io/):
 ```bash
 tectonic -X compile paper.tex
 ```
+
+## License
+
+Released under the [MIT License](LICENSE). © 2026 Zishaan Ahmed.

@@ -94,6 +94,20 @@ for n in (100, 1000, 10000):
     pred = 2 - ((1 - c) * log(n) + (1 - c) + (1 + c) * log((1 + c) / 2)) / (n - 1)
     print(f"  theta=pi/3, n={int(n)}: (L - prediction) * n^2 / ln^2 n = {nstr((Lt - pred) * n**2 / log(n)**2, 4)}")
 
+# Table 3: (n-1)(2 - L_theta(n)) - 2 sin^2(theta/2) ln n at n = 10^6 should be C(theta) + O(ln^2 n / n)
+n = mpf(10) ** 6
+print("\nTable 3:  theta | 2 sin^2(theta/2) | C(theta) | numerical at n=10^6")
+for num, den, lab in ((1, 6, "pi/6"), (1, 4, "pi/4"), (1, 3, "pi/3"), (1, 2, "pi/2"),
+                      (2, 3, "2pi/3"), (3, 4, "3pi/4"), (5, 6, "5pi/6")):
+    c = cos(pi * num / den)
+    Lt = quad(lambda x: sqrt(1 + 2 * c * n * x ** (n - 1) + (n * x ** (n - 1)) ** 2),
+              sorted({mpf(0), mpf(1)} | {1 - k / n for k in (1e5, 3e4, 1e4, 3e3, 1e3, 300, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.1)}))
+    Cform = (1 - c) + (1 + c) * log((1 + c) / 2)
+    emp = (n - 1) * (2 - Lt) - (1 - c) * log(n)
+    assert abs(emp - Cform) < 2 * log(n) ** 2 / n, "Table 3"
+    print(f"  {lab:>6} | {nstr(1 - c, 6)} | {nstr(Cform, 8)} | {nstr(emp, 8)}")
+print("PASS Table 3 values agree with C(theta) to within 2 ln^2 n / n")
+
 # --- Theorem 7.1: squircle -------------------------------------------------
 K = 2 * sqrt(2) * log(1 + sqrt(2)) - 2 * log(2)
 check("K integral", abs(quad(lambda t: (1 - sqrt(t * t + (1 - t) ** 2)) / (t * (1 - t)), [0, 0.5, 1]) - K) < mpf(10) ** -30)
